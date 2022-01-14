@@ -17,7 +17,7 @@ public class CoinCombinations {
 
         // first combination: 4 x 1;
         // second combination: 2 x 2;
-        // third combination: 2x 1 and 1 x 2;
+        // third combination: 2 x 1 and 1 x 2;
 
 
         System.out.println(calculateCombo(coins, totalAmount, 0));
