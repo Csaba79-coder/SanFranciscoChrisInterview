@@ -26,6 +26,9 @@ public class StepOnStairsAmazonInterview {
 
         int resultNoDuplication = findComboNoDuplication(steps, stair, currentIndex);
         System.out.println(resultNoDuplication);
+
+        int minResult = findMinCombo(steps, stair, currentIndex);
+        System.out.println(minResult);
     }
 
     private static int countAllCombination(int[] steps, int stair) {
@@ -60,5 +63,24 @@ public class StepOnStairsAmazonInterview {
             combo += findComboNoDuplication(steps, stair - steps[i], i);
         }
         return combo;
+    }
+
+    private static int findMinCombo(int[] steps, int stair, int currentIndex) {
+        if (stair == 0) {
+            return 0;
+        }
+
+        int result = Integer.MAX_VALUE;
+
+        for (int i = currentIndex; i < steps.length; i++) {
+            if (steps[i] <= stair) {
+                int subResult = findMinCombo(steps, stair - steps[i], i);
+
+                if (subResult != Integer.MAX_VALUE && (subResult + 1) < result) {
+                    result = subResult + 1;
+                }
+            }
+        }
+        return result;
     }
 }
